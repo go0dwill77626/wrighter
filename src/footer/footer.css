@@ -1,0 +1,39 @@
+.footer {
+    background-color: #db6930;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .btn-floating {
+        color: white;
+        font-size: 20px;
+        border: none;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .text-center {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        flex-direction: column;
+
+        .btn-floating {
+            margin-bottom: 10px;
+        }
+    }
+}

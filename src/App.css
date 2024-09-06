@@ -1,0 +1,26 @@
+/* Ensure body and html take up the full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Flex container to handle layout */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the body takes up the full viewport height */
+}
+
+/* Main content area should take up all available space */
+main {
+  flex: 1;
+}
+
+/* Ensure the navbar stays fixed at the top */
+.fixed-top {
+  top: 0;
+  width: 100%;
+  z-index: 1030; /* Make sure the navbar stays on top of other elements */
+}
+
+
