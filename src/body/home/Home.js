@@ -43,7 +43,7 @@ const CarouselComponent = () => {
     ];
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%',marginTop:'6rem'}}>
             <Carousel>
                 {carouselItems.map((item, index) => (
                     <Carousel.Item key={index}>
@@ -51,7 +51,7 @@ const CarouselComponent = () => {
                             className="d-block w-100"
                             src={item.src}
                             alt={`Slide ${index + 1}`}
-                            style={{ height: '540px', objectFit: 'cover' }}
+                            style={{ height: '540px', objectFit: 'cover',borderRadius:'5px'  }}
                         />
                         <Carousel.Caption>
                             <Typography variant="h5" sx={{ fontWeight: 'bold', color: 'white' }}>
@@ -72,15 +72,20 @@ const Home = () => {
     return (
         <Container>
             <CarouselComponent />
-            <Box sx={{ textAlign: 'justify', mt: 4, mb: 4 }}>
-                <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#333' }}>
-                    Welcome to Our Website
-                </Typography>
-                <Typography variant="body1" sx={{ color: '#555', mt: 2 }}>
-                    {HomeText}
-                </Typography>
-            </Box>
-        </Container>
+            <Box sx={{
+                borderRadius:'5px',
+                textAlign: 'justify', mt: 4, mb: 4,
+                padding: '2rem',
+                boxShadow:'0 4px 8px rgba(0, 0, 0, 0.2)',
+                backgroundImage: 'linear-gradient(55deg, #b32877, #c45959, #a78ac0)'}}>
+            <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#333' }}>
+                Welcome to Our Website
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'white', mt: 2 }}>
+                {HomeText}
+            </Typography>
+        </Box>
+        </Container >
     );
 };
 

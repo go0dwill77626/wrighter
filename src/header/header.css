@@ -1,0 +1,35 @@
+/* Ensure the parent element is positioned relative */
+.nav-item-gradient {
+    position: relative; /* Needed for the absolute positioning of the pseudo-element */
+    margin: 5px;
+    padding: 5px;
+}
+
+/* Style for the link itself */
+.nav-link-gradient {
+    font-weight: bold;
+    position: relative; /* Ensure that the pseudo-element is positioned relative to this element */
+    text-decoration: none; /* Remove default underline */
+}
+
+/* Create the underline effect using ::before */
+.nav-link-gradient::before {
+    content: '';
+    position: absolute;
+    bottom: 3px; /* Adjust this value as needed */
+    left: 0;
+    width: 0; /* Start with 0 width */
+    height: 3px; /* Thickness of the underline */
+    background-color: #c45959; /* Color of the underline */
+    transition: width 0.5s ease; /* Smooth transition for width */
+}
+
+/* Expand the underline on hover */
+.nav-link-gradient:hover::before {
+    width: 100%; /* Expand to full width of the text */
+}
+
+/* Navbar background gradient */
+.navbar {
+    background-image: linear-gradient(55deg, white, #c45959);
+}
