@@ -1,0 +1,20 @@
+.margintop {
+    margin-top: 6rem !important;
+}
+
+a {
+    color: black
+}
+
+.address-card {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 100%;
+}
+
+.address-card .card-body {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 5px;
+}

@@ -7,38 +7,38 @@ const CarouselComponent = () => {
     const carouselItems = [
         {
             src: '/images/carousal1.jpg',
-            captionTitle: 'Test caption 1',
-            captionDescription: 'Test caption description 1',
+            // captionTitle: 'Test caption 1',
+            // captionDescription: 'Test caption description 1',
         },
         {
             src: '/images/carousal2.jpg',
-            captionTitle: 'Test caption 2',
-            captionDescription: 'Test caption description 2',
+            // captionTitle: 'Test caption 2',
+            // captionDescription: 'Test caption description 2',
         },
         {
             src: '/images/carousal3.webp',
-            captionTitle: 'Test caption 3',
-            captionDescription: 'Test caption description 3',
+            // captionTitle: 'Test caption 3',
+            // captionDescription: 'Test caption description 3',
         },
         {
             src: '/images/carousal4.jpeg',
-            captionTitle: 'Test caption 4',
-            captionDescription: 'Test caption description 4',
+            // captionTitle: 'Test caption 4',
+            // captionDescription: 'Test caption description 4',
         },
         {
             src: '/images/carousal5.webp',
-            captionTitle: 'Test caption 5',
-            captionDescription: 'Test caption description 5',
+            // captionTitle: 'Test caption 5',
+            // captionDescription: 'Test caption description 5',
         },
         {
             src: '/images/carousal6.png',
-            captionTitle: 'Test caption 6',
-            captionDescription: 'Test caption description 6',
+            // captionTitle: 'Test caption 6',
+            // captionDescription: 'Test caption description 6',
         },
         {
             src: '/images/carousal7.jpg',
-            captionTitle: 'Test caption 7',
-            captionDescription: 'Test caption description 7',
+            // captionTitle: 'Test caption 7',
+            // captionDescription: 'Test caption description 7',
         },
     ];
 
