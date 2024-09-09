@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './contactUs.css';
 
 const ContactUs = () => {
@@ -9,8 +9,10 @@ const ContactUs = () => {
     note: ''
   });
   const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false); // State to track form validity
   const [submissionStatus, setSubmissionStatus] = useState('');
 
+  // Function to validate form data
   const validate = () => {
     const newErrors = {};
     if (!formData.name) newErrors.name = 'Name is required';
@@ -21,13 +23,29 @@ const ContactUs = () => {
     return newErrors;
   };
 
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value
     });
+    checkValidation();
   };
 
+  const checkValidation = () => {
+    const validationErrors = validate();
+    setErrors(validationErrors);
+    setIsFormValid(Object.keys(validationErrors).length === 0); // Check if there are no errors
+  }
+
+  // Revalidate form whenever formData changes
+  // useEffect(() => {
+  //   const validationErrors = validate();
+  //   setErrors(validationErrors);
+  //   setIsFormValid(Object.keys(validationErrors).length === 0); // Check if there are no errors
+  // }, [formData]);
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
@@ -39,7 +57,6 @@ const ContactUs = () => {
     setSubmissionStatus('');
 
     // Add timestamp
-    // const timestamp = new Date().toISOString();
     const options = {
       timeZone: 'Asia/Kolkata',
       year: 'numeric',
@@ -50,7 +67,6 @@ const ContactUs = () => {
       second: '2-digit',
     };
     const timestamp = new Intl.DateTimeFormat('en-IN', options).format(new Date());
-
 
     try {
       const response = await fetch('https://sheetdb.io/api/v1/n3nkz3hp3s826', {
@@ -82,9 +98,21 @@ const ContactUs = () => {
       } else {
         const errorData = await response.json();
         setSubmissionStatus(`Failed to submit data: ${errorData.error || 'Unknown error'}`);
+        setFormData({
+          name: '',
+          address: '',
+          mobile: '',
+          note: ''
+        });
       }
     } catch (error) {
-      setSubmissionStatus(`An error occurred: ${error.message}`);
+      setSubmissionStatus(`Failed !! An error occurred: ${error.message}`);
+      setFormData({
+        name: '',
+        address: '',
+        mobile: '',
+        note: ''
+      });
     }
   };
 
@@ -144,7 +172,7 @@ const ContactUs = () => {
                 ></textarea>
                 {errors.note && <div className="invalid-feedback">{errors.note}</div>}
               </div>
-              <button type="submit" className="btn btn-primary w-100">Submit</button>
+              <button type="submit" className="btn btn-primary w-100" disabled={!isFormValid}>Submit</button>
               {submissionStatus && (
                 <div className={`mt-3 alert ${submissionStatus.startsWith('Failed') ? 'alert-danger' : 'alert-info'}`}>
                   {submissionStatus}
