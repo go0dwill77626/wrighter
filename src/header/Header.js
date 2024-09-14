@@ -57,7 +57,7 @@ const Header = () => {
                 <div className="collapse navbar-collapse" id="navbarNav" ref={navbarRef}> {/* Attach ref here */}
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item nav-item-gradient">
-                            <Link className="nav-link nav-link-gradient" to="/about">About</Link>
+                            <Link className="nav-link nav-link-gradient" to="/about">About Us</Link>
                         </li>
                         <li className="nav-item nav-item-gradient">
                             <Link className="nav-link nav-link-gradient" to="/project">Our Projects</Link>
@@ -65,6 +65,9 @@ const Header = () => {
                         <li className="nav-item nav-item-gradient">
                             <Link className="nav-link nav-link-gradient" to="/services">Services</Link>
                         </li>
+                        <li className="nav-item nav-item-gradient">
+                            <Link className="nav-link nav-link-gradient" to="/careers">Careers</Link>
+                        </li>                        
                         <li className="nav-item nav-item-gradient">
                             <Link className="nav-link nav-link-gradient" to="/contactus">Contact Us</Link>
                         </li>

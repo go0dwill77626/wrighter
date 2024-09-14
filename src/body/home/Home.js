@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Box, Typography, Container } from '@mui/material';
 import { HomeText } from '../../constant/constant';
@@ -6,7 +6,7 @@ import { HomeText } from '../../constant/constant';
 const CarouselComponent = () => {
     const carouselItems = [
         {
-            src: '/images/carousal1.jpg',
+            src: '/images/headerfont3.jpg',
             // captionTitle: 'Test caption 1',
             // captionDescription: 'Test caption description 1',
         },
@@ -14,9 +14,9 @@ const CarouselComponent = () => {
             src: '/images/carousal2.jpg',
             // captionTitle: 'Test caption 2',
             // captionDescription: 'Test caption description 2',
-        },
+        },  
         {
-            src: '/images/carousal3.webp',
+            src: '/images/wallpaper1.jpg',
             // captionTitle: 'Test caption 3',
             // captionDescription: 'Test caption description 3',
         },
@@ -31,7 +31,7 @@ const CarouselComponent = () => {
             // captionDescription: 'Test caption description 5',
         },
         {
-            src: '/images/carousal6.png',
+            src: '/images/headerfont1.jpg',
             // captionTitle: 'Test caption 6',
             // captionDescription: 'Test caption description 6',
         },
@@ -44,7 +44,7 @@ const CarouselComponent = () => {
 
     return (
         <Box sx={{ width: '100%',marginTop:'6rem'}}>
-            <Carousel>
+            <Carousel interval={1000} pause="hover">
                 {carouselItems.map((item, index) => (
                     <Carousel.Item key={index}>
                         <img
@@ -69,6 +69,7 @@ const CarouselComponent = () => {
 };
 
 const Home = () => {
+
     return (
         <Container>
             <CarouselComponent />
@@ -78,7 +79,9 @@ const Home = () => {
                 padding: '2rem',
                 boxShadow:'0 4px 8px rgba(0, 0, 0, 0.2)',
                 backgroundImage: 'linear-gradient(55deg, #b32877, #c45959, #a78ac0)'}}>
-            <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#333' }}>
+            <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', "&:hover": {
+      textDecoration: 'underline',
+    },}}>
                 Welcome to Our Website
             </Typography>
             <Typography variant="body1" sx={{ color: 'white', mt: 2 }}>

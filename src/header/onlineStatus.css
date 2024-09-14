@@ -1,0 +1,43 @@
+/* OnlineStatus.css */
+.online-status-bar {
+    position: fixed;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background-color: #28a745; /* Green for online */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: transform 0.3s ease-in-out;
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .online-status-bar.offline {
+    background-color: #606060; /* Grey for offline */
+  }
+  
+  .showStatus {
+    transform: translateX(-50%) translateY(10px); /* Slide in the banner */
+  }
+  
+  .online-status-icon {
+    margin-right: 5px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-online {
+    color: white; /* White tick for online */
+  }
+  
+  .icon-offline {
+    color: #cccccc; /* Grey cross for offline */
+  }
+  

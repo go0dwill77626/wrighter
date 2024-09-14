@@ -1,0 +1,21 @@
+.project-container {
+    margin-top:6rem !important;
+    width: 100%;
+    overflow: hidden; /* Ensure the text stays within the container */
+  }
+  
+  .scrolling-text h2 {
+    display: inline-block;
+    white-space: nowrap; /* Prevent line breaks */
+    animation: scrollText 10s linear infinite; /* Animation for scrolling */
+  }
+  
+  @keyframes scrollText {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  

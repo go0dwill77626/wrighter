@@ -6,6 +6,8 @@ import ContactUs from "../body/contactus/ContactUs";
 import Project from "../body/project/Project";
 import Services from "../body/services/Services";
 import AppLayout from "../appLayout/AppLayout";
+import ErrorPage from "../error/ErrorPage";
+import Careers from "../body/careers/Careers";
 
 const Router = createBrowserRouter([
     {
@@ -25,6 +27,10 @@ const Router = createBrowserRouter([
                 element: <ContactUs />
             },
             {
+                path:"careers",
+                element:<Careers/>
+            },
+            {
                 path: "services",
                 element: <Services />
             },
@@ -32,7 +38,8 @@ const Router = createBrowserRouter([
                 path: "project",
                 element: <Project />
             },
-        ]
+        ],
+        errorElement:<ErrorPage/>
     },
 ]);
 

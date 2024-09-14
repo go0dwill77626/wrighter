@@ -6,11 +6,13 @@ const ContactUs = () => {
     name: '',
     address: '',
     mobile: '',
+    email: '', // Added email state
     note: ''
   });
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false); // State to track form validity
   const [submissionStatus, setSubmissionStatus] = useState('');
+  const [loading, setLoading] = useState(false); // State to track if submission is in progress
 
   // Function to validate form data
   const validate = () => {
@@ -19,6 +21,8 @@ const ContactUs = () => {
     if (!formData.address) newErrors.address = 'Address is required';
     if (!formData.mobile) newErrors.mobile = 'Mobile number is required';
     if (!/^\d+$/.test(formData.mobile)) newErrors.mobile = 'Mobile number must be numeric';
+    if (!formData.email) newErrors.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email address';
     if (!formData.note) newErrors.note = 'Note is required';
     return newErrors;
   };
@@ -36,14 +40,7 @@ const ContactUs = () => {
     const validationErrors = validate();
     setErrors(validationErrors);
     setIsFormValid(Object.keys(validationErrors).length === 0); // Check if there are no errors
-  }
-
-  // Revalidate form whenever formData changes
-  // useEffect(() => {
-  //   const validationErrors = validate();
-  //   setErrors(validationErrors);
-  //   setIsFormValid(Object.keys(validationErrors).length === 0); // Check if there are no errors
-  // }, [formData]);
+  };
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -55,6 +52,7 @@ const ContactUs = () => {
     }
     setErrors({});
     setSubmissionStatus('');
+    setLoading(true); // Set loading to true when submission starts
 
     // Add timestamp
     const options = {
@@ -79,6 +77,7 @@ const ContactUs = () => {
             {
               Name: formData.name,
               MobileNumber: formData.mobile,
+              Email: formData.email, // Include email in the request
               Address: formData.address,
               Message: formData.note,
               ["Timestamp(IST) dd-mm-yyyyy"]: timestamp // Add the timestamp here
@@ -93,6 +92,7 @@ const ContactUs = () => {
           name: '',
           address: '',
           mobile: '',
+          email: '',
           note: ''
         });
       } else {
@@ -102,6 +102,7 @@ const ContactUs = () => {
           name: '',
           address: '',
           mobile: '',
+          email: '',
           note: ''
         });
       }
@@ -111,8 +112,11 @@ const ContactUs = () => {
         name: '',
         address: '',
         mobile: '',
+        email: '',
         note: ''
       });
+    } finally {
+      setLoading(false); // Set loading to false after submission is complete
     }
   };
 
@@ -121,8 +125,8 @@ const ContactUs = () => {
       {/* Contact Form */}
       <div className="row justify-content-center mb-4">
         <div className="col-lg-6 col-md-8 col-sm-12">
-          <div className="card p-4 shadow-sm" style={{ height: '100%' }}>
-            <h2 className="text-center mb-4">Contact Us</h2>
+          <div className="card p-4 shadow-sm" style={{ height: '100%',backgroundImage:'linear-gradient(247deg, rgb(195 127 127), transparent)' }}>
+            <h2 className="text-center text-white mb-4">Contact Us</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name</label>
@@ -161,6 +165,18 @@ const ContactUs = () => {
                 {errors.mobile && <div className="invalid-feedback">{errors.mobile}</div>}
               </div>
               <div className="mb-3">
+                <label htmlFor="email" className="form-label">Email Address</label>
+                <input
+                  type="email"
+                  className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                  id="email"
+                  placeholder="Enter your email address"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+              </div>
+              <div className="mb-3">
                 <label htmlFor="note" className="form-label">Note</label>
                 <textarea
                   className={`form-control ${errors.note ? 'is-invalid' : ''}`}
@@ -172,7 +188,9 @@ const ContactUs = () => {
                 ></textarea>
                 {errors.note && <div className="invalid-feedback">{errors.note}</div>}
               </div>
-              <button type="submit" className="btn btn-primary w-100" disabled={!isFormValid}>Submit</button>
+              <button type="submit" className="btn btn-primary w-100" disabled={!isFormValid || loading}>
+                {loading ? 'Submitting...' : 'Submit'}
+              </button>
               {submissionStatus && (
                 <div className={`mt-3 alert ${submissionStatus.startsWith('Failed') ? 'alert-danger' : 'alert-info'}`}>
                   {submissionStatus}
@@ -192,7 +210,8 @@ const ContactUs = () => {
               <h5 className="card-title">Our Location</h5>
               <iframe
                 title="Google Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.83543450915!2d144.95373531550464!3d-37.81627927975179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727a45f764c1b1!2sOffice%20Address!5e0!3m2!1sen!2sus!4v1630508993512!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5048.061787033093!2d76.99458787836872!3d28.406462264121934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f1
+                3.1!3m3!1m2!1s0x390d3d4529ac5047%3A0x6dfe962535dafd2c!2sSector%2074A%2C%20Gurugram%2C%20Haryana%20122004!5e0!3m2!1sen!2sin!4v1693409091696!5m2!1sen!2sin"
                 width="100%"
                 height="250"
                 style={{ border: 0 }}
