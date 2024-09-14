@@ -108,8 +108,8 @@ const Careers = () => {
       <p>Thank you for submitting your information!</p>
       <p>
         Kindly share your resume at 
-        <a href="mailto:test@gmail.com" style={{ color: 'black' }}>
-          <strong> himanshu@77626@gmail.com</strong>
+        <a href="mailto:prosacetotal@gmail.com" style={{ color: 'black' }}>
+          <strong> prosacetotal@gmail.com </strong>
         </a> 
         for further processing.
       </p>
