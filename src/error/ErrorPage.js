@@ -8,7 +8,7 @@ const ErrorPage = () => {
     return (
         <div className="error-page-container d-flex flex-column justify-content-center align-items-center text-center">
             <div>
-                <img height="90%" width="100%" src='/images/ErrorImage.jpeg'></img>
+                <img height="90%" width="100%" src='/images/ErrorImage.jpeg' alt="error image"></img>
             </div>
             <div className="error-info p-4 rounded">
                 <h1 className="display-4">{status} {statusText}!</h1>

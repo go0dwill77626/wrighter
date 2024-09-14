@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Box, Typography, Container } from '@mui/material';
 import { HomeText } from '../../constant/constant';
