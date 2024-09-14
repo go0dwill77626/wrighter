@@ -129,8 +129,10 @@ const Careers = () => {
       {!formSubmitted ? (
         <form 
           onSubmit={handleSubmit} 
-          className="p-4 bg-light"
-          style={{ borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }} // Added box-shadow
+          className="p-4 bg-light shadow-lg"
+          style={{ borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+          , backgroundImage:'linear-gradient(247deg, rgb(195 127 127), transparent)' 
+           }} // Added box-shadow
         >
           <div className="row mb-3">
             <div className="col-md-6">

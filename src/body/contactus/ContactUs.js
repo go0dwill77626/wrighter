@@ -125,7 +125,7 @@ const ContactUs = () => {
       {/* Contact Form */}
       <div className="row justify-content-center mb-4">
         <div className="col-lg-6 col-md-8 col-sm-12">
-          <div className="card p-4 shadow-sm" style={{ height: '100%',backgroundImage:'linear-gradient(247deg, rgb(195 127 127), transparent)' }}>
+          <div className="card p-4 shadow-lg" style={{ border:'0px', height: '100%',backgroundImage:'linear-gradient(247deg, rgb(195 127 127), transparent)' }}>
             <h2 className="text-center text-white mb-4">Contact Us</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
