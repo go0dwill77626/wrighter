@@ -66,6 +66,9 @@ const Header = () => {
                             <Link className="nav-link nav-link-gradient" to="/services">Services</Link>
                         </li>
                         <li className="nav-item nav-item-gradient">
+                            <Link className="nav-link nav-link-gradient" to="/clients">Our Clients</Link>
+                        </li>
+                        <li className="nav-item nav-item-gradient">
                             <Link className="nav-link nav-link-gradient" to="/careers">Careers</Link>
                         </li>                        
                         <li className="nav-item nav-item-gradient">

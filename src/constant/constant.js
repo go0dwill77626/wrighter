@@ -59,7 +59,7 @@ export const AccordionArray = [
             "SP3D, CAD Worx",
             "STAAD-Pro, TEKLA Structures",
             "AutoCAD, MicroStation",
-            "ANSYS",
+            "ANSYS and many more as per project requirement",
         ],
         description: "",
     },

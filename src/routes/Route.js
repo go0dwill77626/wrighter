@@ -7,6 +7,7 @@ import Project from "../body/project/Project";
 import Services from "../body/services/Services";
 import AppLayout from "../appLayout/AppLayout";
 import ErrorPage from "../error/ErrorPage";
+import Clients from "../body/clients/Clients";
 import Careers from "../body/careers/Careers";
 
 const Router = createBrowserRouter([
@@ -29,6 +30,10 @@ const Router = createBrowserRouter([
             {
                 path:"careers",
                 element:<Careers/>
+            },
+            {
+                path:"clients",
+                element:<Clients/>
             },
             {
                 path: "services",
