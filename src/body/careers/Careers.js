@@ -12,10 +12,9 @@ const Careers = () => {
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false); // State to track submission
-  const navigate = useNavigate(); // Hook for programmatic navigation
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
-  // Function to get timestamp in IST
   const getISTTimestamp = () => {
     const options = {
       timeZone: 'Asia/Kolkata',
@@ -39,29 +38,27 @@ const Careers = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (isSubmitting) return; // Prevent multiple submissions
+    if (isSubmitting) return;
 
-    setIsSubmitting(true); // Set submitting state to true
+    setIsSubmitting(true);
 
-    // Generate timestamp
     const timestamp = getISTTimestamp();
 
     try {
-      // Send form data to SheetDB
       const response = await fetch('https://sheetdb.io/api/v1/nrgy99qrfe3rr', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          data: [ {
+          data: [{
             Name: formData.name,
             CurrentRole: formData.currentRole,
             Experience: formData.experience,
             Skills: formData.skills,
             Description: formData.description,
-            Timestamp: timestamp, // Include timestamp in the request
-          } ]
+            Timestamp: timestamp,
+          }]
         }),
       });
 
@@ -75,7 +72,7 @@ const Careers = () => {
           skills: '',
           description: ''
         });
-        // Navigate to home page after 2 seconds
+
         setTimeout(() => {
           navigate('/');
         }, 5000);
@@ -85,54 +82,56 @@ const Careers = () => {
     } catch (error) {
       setSubmissionStatus(`Error: ${error.message}`);
     } finally {
-      setIsSubmitting(false); // Reset submitting state after processing
+      setIsSubmitting(false);
     }
   };
 
   const AfterSubmit = () => {
-    const [countdown, setCountdown] = useState(5); // Initial countdown value
+    const [countdown, setCountdown] = useState(5);
     const navigate = useNavigate();
-  
+
     useEffect(() => {
       if (countdown > 0) {
-        const timer = setTimeout(() => setCountdown(countdown - 1), 1000); // Decrease countdown every second
-        return () => clearTimeout(timer); // Cleanup the timer on component unmount
+        const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+        return () => clearTimeout(timer);
       } else {
-        navigate('/'); // Redirect to home page when countdown reaches 0
+        navigate('/');
       }
     }, [countdown, navigate]);
 
-    return(<>
-    <div className="alert alert-success mt-4" role="alert">
-      <h4 className="alert-heading">Submission Successful!</h4>
-      <p>Thank you for submitting your information!</p>
-      <p>
-        Kindly share your resume at 
-        <a href="mailto:prosaectotal@gmail.com" style={{ color: 'black' }}>
-          <strong> prosaectotal@gmail.com </strong>
-        </a> 
-        for further processing.
-      </p>
-      <hr />
-      <p className="mb-0">We look forward to reviewing your application.</p>
-      <hr />
-      <p className="text-center mb-4">
-        Redirecting you to the Home Page in {countdown} seconds...
-      </p>
-    </div>
-    </>)
+    return (
+      <div className="alert alert-success mt-4" role="alert">
+        <h4 className="alert-heading">Submission Successful!</h4>
+        <p>Thank you for submitting your information!</p>
+        <p>
+          Kindly share your resume at 
+          <a href="mailto:prosaectotal@gmail.com" style={{ color: 'black' }}>
+            <strong> prosaectotal@gmail.com </strong>
+          </a> 
+          for further processing.
+        </p>
+        <hr />
+        <p className="mb-0">We look forward to reviewing your application.</p>
+        <hr />
+        <p className="text-center mb-4">
+          Redirecting you to the Home Page in {countdown} seconds...
+        </p>
+      </div>
+    );
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mb-4">
       <h2 className="text-center mb-4">Join Our Team</h2>
       {!formSubmitted ? (
         <form 
           onSubmit={handleSubmit} 
           className="p-4 bg-light shadow-lg"
-          style={{ borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
-          , backgroundImage:'linear-gradient(247deg, rgb(195 127 127), transparent)' 
-           }} // Added box-shadow
+          style={{
+            borderRadius: '8px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            backgroundImage: 'linear-gradient(247deg, rgb(195 127 127), transparent)' 
+          }}
         >
           <div className="row mb-3">
             <div className="col-md-6">
@@ -197,14 +196,14 @@ const Careers = () => {
           <button 
             type="submit" 
             className="btn btn-primary w-100"
-            disabled={isSubmitting} // Disable button when submitting
+            disabled={isSubmitting}
           >
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
         </form>
-      ) : 
-       ( <AfterSubmit />)
-    }
+      ) : (
+        <AfterSubmit />
+      )}
       {submissionStatus && (
         <div className="mt-3 alert alert-info">
           {submissionStatus}

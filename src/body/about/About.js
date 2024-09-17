@@ -47,8 +47,8 @@ const About = () => {
                                     </div>
                                     <div className="card-back">
                                         <p>
-                                            Our commitment to excellence drives continuous improvement
-                                            , while teamwork and commitment ensure collaborative success.
+                                            Our commitment to excellence drives continuous improvement,
+                                            while teamwork and commitment ensure collaborative success.
                                             We uphold integrity and transparency, prioritize reliability
                                             and quality, and focus on learning and growth for innovation.
                                         </p>

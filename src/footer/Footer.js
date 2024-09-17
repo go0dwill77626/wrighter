@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="text-center text-white p-1" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
                 © 2020 Copyright:
                 <a className="text-white" href="https://prosaectotal.com/"> Prosaectotal.com</a>
-                <div>Made with ❤️ By - <a href="mailto:amankumarsinghamar@gmail.com">amankumarsinghamar@gmail.com</a> | <a href="mailto:himanshu@77626@gmail.com">himanshu@77626@gmail.com</a></div>
+                <div>Developed by PROSAEC TOTAL IT Team : <a href="mailto:amankumarsinghamar@gmail.com">amankumarsinghamar@gmail.com</a> | <a href="mailto:himanshu@77626@gmail.com">himanshu@77626@gmail.com</a></div>
             </div>
         </footer>
     );

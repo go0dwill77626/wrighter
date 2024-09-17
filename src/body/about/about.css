@@ -46,10 +46,11 @@
 }
 
 .card-back {
-    background-color: #ffffff;
+    font-weight: bold;
+    font-family: monospace;
     color: #000000;
-    transform: rotateY(180deg); /* Initially hidden side */
-    overflow-y: auto; /* Allow scrolling if content is too large */
+    transform: rotateY(180deg); 
+    overflow-y: auto; 
     text-align: justify;
 }
 
